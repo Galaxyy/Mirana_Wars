@@ -1,4 +1,4 @@
-print ('[BAREBONES] barebones.lua' )
+print ('[MIRANAWARS] barebones.lua' )
 
 DEBUG=true
 USE_LOBBY=false
@@ -15,32 +15,32 @@ end
 
 -- Generated from template
 
-if BareBonesGameMode == nil then
-    print ( '[BAREBONES] creating barebones game mode' )
-      --BareBonesGameMode = {}
-      --BareBonesGameMode.szEntityClassName = "barebones"
-      --BareBonesGameMode.szNativeClassName = "dota_base_game_mode"
-      --BareBonesGameMode.__index = BareBonesGameMode
-    BareBonesGameMode = class({})
+if MiranaWarsGameMode == nil then
+    print ( '[MIRANAWARS] creating barebones game mode' )
+      --MiranaWarsGameMode = {}
+      --MiranaWarsGameMode.szEntityClassName = "barebones"
+      --MiranaWarsGameMode.szNativeClassName = "dota_base_game_mode"
+      --MiranaWarsGameMode.__index = MiranaWarsGameMode
+    MiranaWarsGameMode = class({})
 end
 
-function BareBonesGameMode:InitGameMode()
+function MiranaWarsGameMode:InitGameMode()
     print( "Template addon is loaded." )
     
 end
 
 GameMode = nil
 
-function BareBonesGameMode:new( o )
-  print ( '[BAREBONES] BareBonesGameMode:new' )
+function MiranaWarsGameMode:new( o )
+  print ( '[MIRANAWARS] MiranaWarsGameMode:new' )
   o = o or {}
-  setmetatable( o, BareBonesGameMode )
+  setmetatable( o, MiranaWarsGameMode )
   return o
 end
 
-function BareBonesGameMode:InitGameMode()
-  BareBonesGameMode = self
-  print('[BAREBONES] Starting to load Barebones gamemode...')
+function MiranaWarsGameMode:InitGameMode()
+  MiranaWarsGameMode = self
+  print('[MIRANAWARS] Starting to load Barebones gamemode...')
 
   -- Setup rules
   GameRules:SetHeroRespawnEnabled( false )
@@ -52,21 +52,21 @@ function BareBonesGameMode:InitGameMode()
   GameRules:SetTreeRegrowTime( 60.0 )
   GameRules:SetUseCustomHeroXPValues ( true )
   GameRules:SetGoldPerTick(0)
-  print('[BAREBONES] Rules set')
+  print('[MIRANAWARS] Rules set')
 
   InitLogFile( "log/barebones.txt","")
 
   -- Hooks
-  ListenToGameEvent('entity_killed', Dynamic_Wrap(BareBonesGameMode, 'OnEntityKilled'), self)
-  ListenToGameEvent('player_connect_full', Dynamic_Wrap(BareBonesGameMode, 'AutoAssignPlayer'), self)
-  ListenToGameEvent('player_disconnect', Dynamic_Wrap(BareBonesGameMode, 'CleanupPlayer'), self)
-  ListenToGameEvent('dota_item_purchased', Dynamic_Wrap(BareBonesGameMode, 'ShopReplacement'), self)
-  ListenToGameEvent('player_say', Dynamic_Wrap(BareBonesGameMode, 'PlayerSay'), self)
-  ListenToGameEvent('player_connect', Dynamic_Wrap(BareBonesGameMode, 'PlayerConnect'), self)
-  --ListenToGameEvent('player_info', Dynamic_Wrap(BareBonesGameMode, 'PlayerInfo'), self)
-  ListenToGameEvent('dota_player_used_ability', Dynamic_Wrap(BareBonesGameMode, 'AbilityUsed'), self)
+  ListenToGameEvent('entity_killed', Dynamic_Wrap(MiranaWarsGameMode, 'OnEntityKilled'), self)
+  ListenToGameEvent('player_connect_full', Dynamic_Wrap(MiranaWarsGameMode, 'AutoAssignPlayer'), self)
+  ListenToGameEvent('player_disconnect', Dynamic_Wrap(MiranaWarsGameMode, 'CleanupPlayer'), self)
+  ListenToGameEvent('dota_item_purchased', Dynamic_Wrap(MiranaWarsGameMode, 'ShopReplacement'), self)
+  ListenToGameEvent('player_say', Dynamic_Wrap(MiranaWarsGameMode, 'PlayerSay'), self)
+  ListenToGameEvent('player_connect', Dynamic_Wrap(MiranaWarsGameMode, 'PlayerConnect'), self)
+  --ListenToGameEvent('player_info', Dynamic_Wrap(MiranaWarsGameMode, 'PlayerInfo'), self)
+  ListenToGameEvent('dota_player_used_ability', Dynamic_Wrap(MiranaWarsGameMode, 'AbilityUsed'), self)
 
-  Convars:RegisterCommand( "command_example", Dynamic_Wrap(BareBonesGameMode, 'ExampleConsoleCommand'), "A console command example", 0 )
+  Convars:RegisterCommand( "command_example", Dynamic_Wrap(MiranaWarsGameMode, 'ExampleConsoleCommand'), "A console command example", 0 )
   
   -- Fill server with fake clients
   Convars:RegisterCommand('fake', function()
@@ -132,14 +132,14 @@ function BareBonesGameMode:InitGameMode()
 
   -- Active Hero Map
   self.vPlayerHeroData = {}
-  print('[BAREBONES] values set')
+  print('[MIRANAWARS] values set')
 
-  print('[BAREBONES] Done precaching!') 
+  print('[MIRANAWARS] Done precaching!') 
 
-  print('[BAREBONES] Done loading Barebones gamemode!\n\n')
+  print('[MIRANAWARS] Done loading Barebones gamemode!\n\n')
 end
 
-function BareBonesGameMode:CaptureGameMode()
+function MiranaWarsGameMode:CaptureGameMode()
   if GameMode == nil then
     -- Set GameMode parameters
     GameMode = GameRules:GetGameModeEntity()        
@@ -160,8 +160,8 @@ function BareBonesGameMode:CaptureGameMode()
     -- Chage the minimap icon size
     GameRules:SetHeroMinimapIconSize( 300 )
 
-    print( '[BAREBONES] Beginning Think' ) 
-    GameMode:SetContextThink("BarebonesThink", Dynamic_Wrap( BareBonesGameMode, 'Think' ), 0.1 )
+    print( '[MIRANAWARS] Beginning Think' ) 
+    GameMode:SetContextThink("BarebonesThink", Dynamic_Wrap( MiranaWarsGameMode, 'Think' ), 0.1 )
 
     --GameRules:GetGameModeEntity():SetThink( "Think", self, "GlobalThink", 2 )
 
@@ -169,29 +169,29 @@ function BareBonesGameMode:CaptureGameMode()
   end 
 end
 
-function BareBonesGameMode:SetupMultiTeams()
+function MiranaWarsGameMode:SetupMultiTeams()
   MultiTeam:start()
   MultiTeam:CreateTeam("team1")
   MultiTeam:CreateTeam("team2")
 end
 
-function BareBonesGameMode:AbilityUsed(keys)
-  print('[BAREBONES] AbilityUsed')
+function MiranaWarsGameMode:AbilityUsed(keys)
+  print('[MIRANAWARS] AbilityUsed')
   PrintTable(keys)
 end
 
 -- Cleanup a player when they leave
-function BareBonesGameMode:CleanupPlayer(keys)
-  print('[BAREBONES] Player Disconnected ' .. tostring(keys.userid))
+function MiranaWarsGameMode:CleanupPlayer(keys)
+  print('[MIRANAWARS] Player Disconnected ' .. tostring(keys.userid))
 end
 
-function BareBonesGameMode:CloseServer()
+function MiranaWarsGameMode:CloseServer()
   -- Just exit
   SendToServerConsole('exit')
 end
 
-function BareBonesGameMode:PlayerConnect(keys)
-  print('[BAREBONES] PlayerConnect')
+function MiranaWarsGameMode:PlayerConnect(keys)
+  print('[MIRANAWARS] PlayerConnect')
   PrintTable(keys)
   
   -- Fill in the usernames for this userID
@@ -207,8 +207,8 @@ local attach = 0
 local controlPoints = {}
 local particleEffect = ""
 
-function BareBonesGameMode:PlayerSay(keys)
-  print ('[BAREBONES] PlayerSay')
+function MiranaWarsGameMode:PlayerSay(keys)
+  print ('[MIRANAWARS] PlayerSay')
   PrintTable(keys)
   
   -- Get the player entity for the user speaking
@@ -235,10 +235,10 @@ function BareBonesGameMode:PlayerSay(keys)
   
 end
 
-function BareBonesGameMode:AutoAssignPlayer(keys)
-  print ('[BAREBONES] AutoAssignPlayer')
+function MiranaWarsGameMode:AutoAssignPlayer(keys)
+  print ('[MIRANAWARS] AutoAssignPlayer')
   PrintTable(keys)
-  BareBonesGameMode:CaptureGameMode()
+  MiranaWarsGameMode:CaptureGameMode()
   
   local entIndex = keys.index+1
   -- The Player entity of the joining user
@@ -340,7 +340,7 @@ function BareBonesGameMode:AutoAssignPlayer(keys)
 })
 end
 
-function BareBonesGameMode:LoopOverPlayers(callback)
+function MiranaWarsGameMode:LoopOverPlayers(callback)
   for k, v in pairs(self.vPlayers) do
     -- Validate the player
     if IsValidEntity(v.hero) then
@@ -352,8 +352,8 @@ function BareBonesGameMode:LoopOverPlayers(callback)
   end
 end
 
-function BareBonesGameMode:ShopReplacement( keys )
-  print ( '[BAREBONES] ShopReplacement' )
+function MiranaWarsGameMode:ShopReplacement( keys )
+  print ( '[MIRANAWARS] ShopReplacement' )
   PrintTable(keys)
 
   -- The playerID of the hero who is buying something
@@ -368,7 +368,7 @@ function BareBonesGameMode:ShopReplacement( keys )
   
 end
 
-function BareBonesGameMode:getItemByName( hero, name )
+function MiranaWarsGameMode:getItemByName( hero, name )
   -- Find item by slot
   for i=0,11 do
     local item = hero:GetItemInSlot( i )
@@ -383,11 +383,11 @@ function BareBonesGameMode:getItemByName( hero, name )
   return nil
 end
 
-function BareBonesGameMode:Think()
+function MiranaWarsGameMode:Think()
   --[[print("THINK")
-  print(BareBonesGameMode.timers)
+  print(MiranaWarsGameMode.timers)
   print(3)
-  PrintTable(BareBonesGameMode.timers)
+  PrintTable(MiranaWarsGameMode.timers)
   print(4)
   print("---------------")]]
   -- If the game's over, it's over.
@@ -398,16 +398,16 @@ function BareBonesGameMode:Think()
   -- Track game time, since the dt passed in to think is actually wall-clock time not simulation time.
   local now = GameRules:GetGameTime()
   --print("now: " .. now)
-  if BareBonesGameMode.t0 == nil then
-    BareBonesGameMode.t0 = now
+  if MiranaWarsGameMode.t0 == nil then
+    MiranaWarsGameMode.t0 = now
   end
-  local dt = now - BareBonesGameMode.t0
-  BareBonesGameMode.t0 = now
+  local dt = now - MiranaWarsGameMode.t0
+  MiranaWarsGameMode.t0 = now
 
-  --BareBonesGameMode:thinkState( dt )
+  --MiranaWarsGameMode:thinkState( dt )
 
   -- Process timers
-  for k,v in pairs(BareBonesGameMode.timers) do
+  for k,v in pairs(MiranaWarsGameMode.timers) do
     --print ("EXEC timer: " .. tostring(k))
     local bUseGameTime = false
     local bFixResolution = true
@@ -426,10 +426,10 @@ function BareBonesGameMode:Think()
     -- Check if the timer has finished
     if now >= v.endTime then
       -- Remove from timers list
-      BareBonesGameMode.timers[k] = nil
+      MiranaWarsGameMode.timers[k] = nil
 
       -- Run the callback
-      local status, nextCall = pcall(v.callback, BareBonesGameMode, v)
+      local status, nextCall = pcall(v.callback, MiranaWarsGameMode, v)
 
       -- Make sure it worked
       if status then
@@ -441,12 +441,12 @@ function BareBonesGameMode:Think()
           else
             v.endTime = nextCall
           end
-          BareBonesGameMode.timers[k] = v
+          MiranaWarsGameMode.timers[k] = v
         end
 
       else
         -- Nope, handle the error
-        BareBonesGameMode:HandleEventError('Timer', k, nextCall)
+        MiranaWarsGameMode:HandleEventError('Timer', k, nextCall)
       end
     end
   end
@@ -454,7 +454,7 @@ function BareBonesGameMode:Think()
   return THINK_TIME
 end
 
-function BareBonesGameMode:HandleEventError(name, event, err)
+function MiranaWarsGameMode:HandleEventError(name, event, err)
   -- This gets fired when an event throws an error
 
   -- Log to console
@@ -476,7 +476,7 @@ function BareBonesGameMode:HandleEventError(name, event, err)
   end
 end
 
-function BareBonesGameMode:CreateTimer(name, args)
+function MiranaWarsGameMode:CreateTimer(name, args)
   --[[
   args: {
   endTime = Time you want this timer to end: Time() + 30 (for 30 seconds from now),
@@ -498,21 +498,21 @@ function BareBonesGameMode:CreateTimer(name, args)
   end
 
   -- Store the timer
-  BareBonesGameMode.timers[name] = args
+  MiranaWarsGameMode.timers[name] = args
 end
 
-function BareBonesGameMode:RemoveTimer(name)
+function MiranaWarsGameMode:RemoveTimer(name)
   -- Remove this timer
-  BareBonesGameMode.timers[name] = nil
+  MiranaWarsGameMode.timers[name] = nil
 end
 
-function BareBonesGameMode:RemoveTimers(killAll)
+function MiranaWarsGameMode:RemoveTimers(killAll)
   local timers2 = {}
 
   -- If we shouldn't kill all timers
   if not killAll then
     -- Loop over all timers
-    for k,v in pairs(BareBonesGameMode.timers) do
+    for k,v in pairs(MiranaWarsGameMode.timers) do
       -- Check if it is persistant
       if v.persist then
         -- Add it to our new timer list
@@ -522,10 +522,10 @@ function BareBonesGameMode:RemoveTimers(killAll)
   end
 
   -- Store the new batch of timers
-  BareBonesGameMode.timers = timers2
+  MiranaWarsGameMode.timers = timers2
 end
 
-function BareBonesGameMode:ExampleConsoleCommand()
+function MiranaWarsGameMode:ExampleConsoleCommand()
   print( '******* Example Console Command ***************' )
   local cmdPlayer = Convars:GetCommandClient()
   if cmdPlayer then
@@ -538,8 +538,8 @@ function BareBonesGameMode:ExampleConsoleCommand()
   print( '*********************************************' )
 end
 
-function BareBonesGameMode:OnEntityKilled( keys )
-  print( '[BAREBONES] OnEntityKilled Called' )
+function MiranaWarsGameMode:OnEntityKilled( keys )
+  print( '[MIRANAWARS] OnEntityKilled Called' )
   PrintTable( keys )
   
   -- The Unit that was Killed

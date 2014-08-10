@@ -1,9 +1,6 @@
 -- Generated from template
 
-require('util')
-require('physics')
-require('multiteam')
-require('barebones')
+require('miranawars')
 
 --[[if ReflexGameMode == nil then
     print ( '[REFLEX] creating reflex game mode' )
@@ -18,14 +15,15 @@ function Precache( context )
 			PrecacheResource( "particle", "*.vpcf", context )
 			PrecacheResource( "particle_folder", "particles/folder", context )
 	]]
-		PrecacheUnitByNameSync('npc_dota_hero_axe', context)
+		PrecacheUnitByNameSync('npc_dota_hero_mirana', context)
     	PrecacheResource( "soundfile", "*.vsndevts", context )
     	PrecacheResource( "particle_folder", "particles/frostivus_gameplay", context )
+    	PrecacheResource("model_folder", "models/props_gameplay", context)
 		PrecacheUnitByNameSync('npc_precache_everything', context)
 end
 
 -- Create the game mode when we activate
 function Activate()
-	GameRules.AddonTemplate = BareBonesGameMode()
+	GameRules.AddonTemplate = MiranaWarsGameMode()
 	GameRules.AddonTemplate:InitGameMode()
 end

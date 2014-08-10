@@ -1,13 +1,13 @@
 "AddonInfo"
 {
 	"addonSteamAppID"	"816"
-	"addontitle"	"Barebones"
+	"addontitle"	"Mirana Wars"
 	"addonversion"	"0.1"
-	"addontagline"	"Barebones"
-	"addonauthor"	"BMD"
+	"addontagline"	"MiranaWars"
+	"addonauthor"	"FBrainz and Emerald"
 	"addonSteamGroupName"	""
 	"addonauthorSteamID"	""
 	"addonContent_Campaign"	"0"
-	"addonURL0"	"https://github.com/bmddota/barebones/"
-	"addonDescription"	"Barebones"
+	"addonURL0"	"https://github.com/Galaxyy/Mirana_Wars/"
+	"addonDescription"	"Mirana Wars - A Custom Gamemode"
 }
