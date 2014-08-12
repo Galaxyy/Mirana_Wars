@@ -1,4 +1,4 @@
-print ('[MIRANAWARS] barebones.lua' )
+print ('[MIRANAWARS] miranawars.lua' )
 
 DEBUG=true
 USE_LOBBY=false
@@ -16,9 +16,9 @@ end
 -- Generated from template
 
 if MiranaWarsGameMode == nil then
-    print ( '[MIRANAWARS] creating barebones game mode' )
+    print ( '[MIRANAWARS] creating miranawars game mode' )
       --MiranaWarsGameMode = {}
-      --MiranaWarsGameMode.szEntityClassName = "barebones"
+      --MiranaWarsGameMode.szEntityClassName = "miranawars"
       --MiranaWarsGameMode.szNativeClassName = "dota_base_game_mode"
       --MiranaWarsGameMode.__index = MiranaWarsGameMode
     MiranaWarsGameMode = class({})
@@ -40,7 +40,7 @@ end
 
 function MiranaWarsGameMode:InitGameMode()
   MiranaWarsGameMode = self
-  print('[MIRANAWARS] Starting to load Barebones gamemode...')
+  print('[MIRANAWARS] Starting to load Mirana Wars gamemode...')
 
   -- Setup rules
   GameRules:SetHeroRespawnEnabled( false )
@@ -54,7 +54,7 @@ function MiranaWarsGameMode:InitGameMode()
   GameRules:SetGoldPerTick(0)
   print('[MIRANAWARS] Rules set')
 
-  InitLogFile( "log/barebones.txt","")
+  InitLogFile( "log/miranawars.txt","")
 
   -- Hooks
   ListenToGameEvent('entity_killed', Dynamic_Wrap(MiranaWarsGameMode, 'OnEntityKilled'), self)
@@ -77,7 +77,7 @@ function MiranaWarsGameMode:InitGameMode()
         
       self:CreateTimer('assign_fakes', {
         endTime = Time(),
-        callback = function(barebones, args)
+        callback = function(miranawars, args)
           local userID = 20
           for i=0, 9 do
             userID = userID + 1
@@ -136,7 +136,7 @@ function MiranaWarsGameMode:InitGameMode()
 
   print('[MIRANAWARS] Done precaching!') 
 
-  print('[MIRANAWARS] Done loading Barebones gamemode!\n\n')
+  print('[MIRANAWARS] Done loading Mirana Wars gamemode!\n\n')
 end
 
 function MiranaWarsGameMode:CaptureGameMode()
@@ -161,7 +161,7 @@ function MiranaWarsGameMode:CaptureGameMode()
     GameRules:SetHeroMinimapIconSize( 300 )
 
     print( '[MIRANAWARS] Beginning Think' ) 
-    GameMode:SetContextThink("BarebonesThink", Dynamic_Wrap( MiranaWarsGameMode, 'Think' ), 0.1 )
+    GameMode:SetContextThink("MiranaWarsThink", Dynamic_Wrap( MiranaWarsGameMode, 'Think' ), 0.1 )
 
     --GameRules:GetGameModeEntity():SetThink( "Think", self, "GlobalThink", 2 )
 
@@ -289,7 +289,7 @@ function MiranaWarsGameMode:AutoAssignPlayer(keys)
   print("CREATIMNG TIMER")
   self:CreateTimer('assign_player_'..entIndex, {
   endTime = Time(),
-  callback = function(barebones, args)
+  callback = function(miranawars, args)
     -- Make sure the game has started
     print ('ASSIGNED')
     playerID = ply:GetPlayerID()
