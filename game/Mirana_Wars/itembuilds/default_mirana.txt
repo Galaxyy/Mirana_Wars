@@ -1,12 +1,12 @@
-"itembuilds/default_generic.txt"
+"itembuilds"
 {
 	"author"		"Valve"
-	"hero"			"npc_dota_hero_miranar"
+	"hero"			"npc_dota_hero_mirana"
 	"Title"			"Recommended items for different roles in Mirana Wars"
 	
 	"Items"
 	{		
-		"#DOTA_Item_Build_Support_Items"
+		"Support Items"
 		{
 			"item"		"item_ward_sentry"
 			"item"		"item_ward_observer"
@@ -16,33 +16,26 @@
 			"item"		"item_mekansm"
 		}
 		
-		"#DOTA_Item_Build_Tank_Items"
+		"Tank Items"
 		{	
 			"item"		"item_bracer"
 			"item"		"item_magic_stick"
 			"item"		"item_power_treads"
-		"LATER"
 			"item"		"item_mekansm"
 			"item"		"item_bloodstone"
 			"item"		"item_shivas_guard"
 			"item"		"item_heart"
 		}
 		
-		"#DOTA_Item_Build_Assassin_Items"
+		"Assassin Items"
 		{
-			"item"		"item_boots"
 			"item"		"item_yasha"
 			"item"		"item_bracer"
-		"LATER"
 			"item"		"item_phase_boots"
 			"item"		"item_ancient_janggo"
 			"item"		"item_lesser_crit"
 			"item"		"item_monkey_king_bar"
 			"item"		"item_desolator"
-		}
-		
-		
-		
 		}
 	}
 }
