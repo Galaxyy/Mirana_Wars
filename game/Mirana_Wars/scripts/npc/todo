@@ -1,0 +1,21 @@
+DONE 1. Increase the Miranas model and set Movement speed to - 350
+NONE 2. Make miranas respawn in a random position in the map when they die
+3. Set the respawn time to 8s
+DONE 4. leave the gold bounty the same, just set to give exp (the same as in Dota 2)
+DONE 5. Set not to loose gold when u die
+DONE 7. Remove mana from Mirana's
+8. Give the Miranas both abilities (arrow and leap) when the game starts
+IMPOSSIBLE 9. Try to rotate the camera
+DONE 10. Change the spawn points (radiant bottom left) (dire top right)
+DONE 11. *HERO*
+
+Mirana HP = 600
+Damage = 50
+MS = 340
+
+*ARROW*
+Arrow speed = 20; damage = 100 +range; distance = 2400 ; cd = 10s
+
+*LEAP*
+Range = 800
+CD = 13s
